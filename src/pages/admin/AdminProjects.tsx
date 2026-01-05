@@ -78,16 +78,17 @@ const AdminProjects = () => {
   };
 
   return (
-    <div className="space-y-8">
-      <div>
-        <h1 className="text-2xl font-semibold mb-2">Projetos</h1>
-        <p className="text-sm text-muted-foreground">
+    <div className="space-y-8 animate-fade-in">
+      <div className="space-y-1">
+        <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-muted-foreground">Portfólio</p>
+        <h1 className="text-2xl font-semibold">Projetos</h1>
+        <p className="text-sm text-muted-foreground max-w-xl">
           Clique em áreas do preview para focar o formulário e edite o primeiro projeto da lista.
         </p>
       </div>
 
       <div className="grid gap-8 lg:grid-cols-2">
-        <section className="border border-border rounded-lg overflow-hidden bg-muted/30">
+        <section className="border border-border rounded-xl overflow-hidden bg-muted/30">
           <div className="relative aspect-[3/4] lg:aspect-auto max-h-[80vh] overflow-y-auto">
             <WorkPage />
 
@@ -107,7 +108,7 @@ const AdminProjects = () => {
           </div>
         </section>
 
-        <section className="border border-border rounded-lg p-6">
+        <section className="border border-border rounded-xl p-6 lg:p-8 bg-muted/40">
           {firstProject ? (
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -198,8 +199,12 @@ const AdminProjects = () => {
                   )}
                 />
 
-                <div className="pt-2">
-                  <Button type="submit" disabled={isLoading || updateProject.isPending}>
+                <div className="flex justify-end pt-2">
+                  <Button
+                    type="submit"
+                    disabled={isLoading || updateProject.isPending}
+                    className="hover-scale"
+                  >
                     {updateProject.isPending ? "Salvando..." : "Salvar alterações"}
                   </Button>
                 </div>

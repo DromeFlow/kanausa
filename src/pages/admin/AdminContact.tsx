@@ -77,16 +77,17 @@ const AdminContact = () => {
   };
 
   return (
-    <div className="space-y-8">
-      <div>
-        <h1 className="text-2xl font-semibold mb-2">Contato / Estúdio</h1>
-        <p className="text-sm text-muted-foreground">
+    <div className="space-y-8 animate-fade-in">
+      <div className="space-y-1">
+        <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-muted-foreground">Contato</p>
+        <h1 className="text-2xl font-semibold">Contato / Estúdio</h1>
+        <p className="text-sm text-muted-foreground max-w-xl">
           Veja a pré-visualização da página de contato e edite os textos principais do estúdio.
         </p>
       </div>
 
       <div className="grid gap-8 lg:grid-cols-2">
-        <section className="border border-border rounded-lg overflow-hidden bg-muted/30">
+        <section className="border border-border rounded-xl overflow-hidden bg-muted/30">
           <div className="relative aspect-[3/4] lg:aspect-auto max-h-[80vh] overflow-y-auto">
             <ContactPage />
 
@@ -113,7 +114,7 @@ const AdminContact = () => {
           </div>
         </section>
 
-        <section className="border border-border rounded-lg p-6">
+        <section className="border border-border rounded-xl p-6 lg:p-8 bg-muted/40">
           {contact ? (
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -201,8 +202,12 @@ const AdminContact = () => {
                   )}
                 />
 
-                <div className="pt-2">
-                  <Button type="submit" disabled={isLoading || updateContact.isPending}>
+                <div className="flex justify-end pt-2">
+                  <Button
+                    type="submit"
+                    disabled={isLoading || updateContact.isPending}
+                    className="hover-scale"
+                  >
                     {updateContact.isPending ? "Salvando..." : "Salvar alterações"}
                   </Button>
                 </div>
