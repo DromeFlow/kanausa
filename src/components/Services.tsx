@@ -1,26 +1,7 @@
+import { useServices } from "@/hooks/useServices";
+
 const Services = () => {
-  const services = [
-    {
-      number: "01",
-      title: "RESIDENCIAL",
-      description: "Projetamos casas que refletem estilos de vida únicos, mantendo a integridade arquitetônica"
-    },
-    {
-      number: "02", 
-      title: "COMERCIAL",
-      description: "Criamos espaços funcionais que potencializam ambientes de trabalho e experiências do usuário"
-    },
-    {
-      number: "03",
-      title: "RENOVAÇÃO",
-      description: "Transformamos estruturas existentes com olhar contemporâneo e práticas sustentáveis"
-    },
-    {
-      number: "04",
-      title: "CONSULTORIA",
-      description: "Oferecemos orientação especializada em diretrizes de projeto, planejamento e soluções arquitetônicas"
-    }
-  ];
+  const { data: services = [] } = useServices();
 
   return (
     <section id="services" className="py-32 bg-background">
@@ -28,25 +9,21 @@ const Services = () => {
         <div className="max-w-7xl mx-auto">
           <div className="mb-20">
             <h2 className="text-minimal text-muted-foreground mb-4">SERVIÇOS</h2>
-            <h3 className="text-4xl md:text-6xl font-light text-architectural">
-              O que fazemos
-            </h3>
+            <h3 className="text-4xl md:text-6xl font-light text-architectural">O que fazemos</h3>
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-x-20 gap-y-16">
             {services.map((service, index) => (
-              <div key={index} className="group">
+              <div key={service.id ?? index} className="group">
                 <div className="flex items-start space-x-6">
                   <span className="text-minimal text-muted-foreground font-medium">
-                    {service.number}
+                    {String(index + 1).padStart(2, "0")}
                   </span>
                   <div>
                     <h4 className="text-2xl font-light mb-4 text-architectural group-hover:text-muted-foreground transition-colors duration-500">
                       {service.title}
                     </h4>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {service.description}
-                    </p>
+                    <p className="text-muted-foreground leading-relaxed">{service.description}</p>
                   </div>
                 </div>
               </div>
