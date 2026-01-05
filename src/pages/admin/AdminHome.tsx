@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { ImageField } from "@/components/admin/ImageField";
 
 const schema = z.object({
   id: z.string().optional(),
@@ -185,15 +186,14 @@ const AdminHome = () => {
                 name="background_image_url"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>URL da imagem de fundo (opcional)</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="https://..."
-                        {...field}
-                        disabled={isLoading || updateHero.isPending}
-                      />
-                    </FormControl>
-                    <FormMessage />
+                    <ImageField
+                      label="Imagem de fundo (opcional)"
+                      description="Envie uma imagem ou deixe em branco para usar o padrão."
+                      value={field.value || null}
+                      onChange={(url) => field.onChange(url ?? "")}
+                      bucketPathPrefix="home/hero"
+                      disabled={isLoading || updateHero.isPending}
+                    />
                   </FormItem>
                 )}
               />
