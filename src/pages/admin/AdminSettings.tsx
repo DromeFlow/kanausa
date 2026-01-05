@@ -71,84 +71,114 @@ const AdminSettings = () => {
   };
 
   return (
-    <div className="space-y-8">
-      <div>
-        <h1 className="text-2xl font-semibold mb-2">Configurações do site</h1>
-        <p className="text-sm text-muted-foreground">
-          Ajuste o nome do estúdio, textos de rodapé e visibilidade do link de acesso ao painel admin.
+    <div className="space-y-8 animate-fade-in">
+      <div className="space-y-1">
+        <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-muted-foreground">
+          Ajustes gerais
+        </p>
+        <h1 className="text-2xl font-semibold">Configurações do site</h1>
+        <p className="text-sm text-muted-foreground max-w-xl">
+          Defina como o estúdio aparece no rodapé e controle a visibilidade do acesso ao painel administrativo.
         </p>
       </div>
 
-      <section className="border border-border rounded-lg p-6 max-w-2xl">
+      <section className="border border-border rounded-xl p-6 lg:p-8 bg-muted/40">
         {settings ? (
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <FormField
-                control={form.control}
-                name="site_name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Nome do site / estúdio</FormLabel>
-                    <FormControl>
-                      <Input {...field} disabled={isLoading || updateSettings.isPending} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+              <div className="grid gap-6 lg:grid-cols-2">
+                <div className="space-y-4">
+                  <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                    Identidade do site
+                  </p>
 
-              <FormField
-                control={form.control}
-                name="footer_text"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Texto de rodapé</FormLabel>
-                    <FormControl>
-                      <Textarea rows={3} {...field} disabled={isLoading || updateSettings.isPending} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                  <FormField
+                    control={form.control}
+                    name="site_name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Nome do site / estúdio</FormLabel>
+                        <FormControl>
+                          <Input {...field} disabled={isLoading || updateSettings.isPending} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-              <FormField
-                control={form.control}
-                name="show_admin_link"
-                render={({ field }) => (
-                  <FormItem className="flex items-center justify-between rounded-lg border border-border bg-muted/40 px-4 py-3">
-                    <div className="space-y-1">
-                      <FormLabel>Mostrar link para painel admin no site</FormLabel>
-                      <p className="text-xs text-muted-foreground">
-                        Útil durante a fase de construção do site. Você pode ocultar depois que o projeto estiver no ar.
-                      </p>
-                    </div>
-                    <FormControl>
-                      <Switch
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                        disabled={isLoading || updateSettings.isPending}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
+                  <FormField
+                    control={form.control}
+                    name="footer_text"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Texto de rodapé</FormLabel>
+                        <FormControl>
+                          <Textarea
+                            rows={3}
+                            {...field}
+                            disabled={isLoading || updateSettings.isPending}
+                            placeholder={`© ${new Date().getFullYear()} Kanau Arquitetura`}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
 
-              <FormField
-                control={form.control}
-                name="admin_link_label"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Texto do link do painel admin</FormLabel>
-                    <FormControl>
-                      <Input {...field} disabled={isLoading || updateSettings.isPending} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                <div className="space-y-4">
+                  <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                    Acesso administrativo
+                  </p>
 
-              <div className="pt-2">
-                <Button type="submit" disabled={isLoading || updateSettings.isPending}>
+                  <FormField
+                    control={form.control}
+                    name="show_admin_link"
+                    render={({ field }) => (
+                      <FormItem className="flex items-start justify-between gap-4 rounded-lg border border-border bg-background/60 px-4 py-3">
+                        <div className="space-y-1">
+                          <FormLabel>Mostrar link para painel admin no site</FormLabel>
+                          <p className="text-xs text-muted-foreground max-w-sm">
+                            Quando ativado, um pequeno link com cadeado aparece no rodapé para acesso rápido ao painel.
+                          </p>
+                        </div>
+                        <FormControl>
+                          <Switch
+                            checked={field.value}
+                            onCheckedChange={field.onChange}
+                            disabled={isLoading || updateSettings.isPending}
+                          />
+                        </FormControl>
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="admin_link_label"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Texto do link do painel admin</FormLabel>
+                        <FormControl>
+                          <Input
+                            {...field}
+                            disabled={isLoading || updateSettings.isPending}
+                            placeholder="Admin"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+              </div>
+
+              <div className="flex justify-end pt-2">
+                <Button
+                  type="submit"
+                  disabled={isLoading || updateSettings.isPending}
+                  className="hover-scale"
+                >
                   {updateSettings.isPending ? "Salvando..." : "Salvar configurações"}
                 </Button>
               </div>
