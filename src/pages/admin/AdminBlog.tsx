@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { ImageField } from "@/components/admin/ImageField";
 
 const schema = z.object({
   id: z.string(),
@@ -18,6 +19,7 @@ const schema = z.object({
   category: z.string().optional().nullable(),
   read_time: z.string().optional().nullable(),
   author_name: z.string().optional().nullable(),
+  cover_image_url: z.string().url("URL inválida").optional().or(z.literal("")).nullable(),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -39,6 +41,7 @@ const AdminBlog = () => {
           category: firstPost.category ?? "",
           read_time: firstPost.read_time ?? "",
           author_name: firstPost.author_name ?? "",
+          cover_image_url: firstPost.cover_image_url ?? "",
         }
       : undefined,
   });
@@ -53,6 +56,7 @@ const AdminBlog = () => {
       category: firstPost.category ?? "",
       read_time: firstPost.read_time ?? "",
       author_name: firstPost.author_name ?? "",
+      cover_image_url: firstPost.cover_image_url ?? "",
     });
   }, [firstPost, form]);
 
@@ -172,6 +176,23 @@ const AdminBlog = () => {
                         <Input {...field} disabled={isLoading || updatePost.isPending} />
                       </FormControl>
                       <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="cover_image_url"
+                  render={({ field }) => (
+                    <FormItem>
+                      <ImageField
+                        label="Imagem de capa do artigo"
+                        description="Esta imagem aparece como capa na listagem do blog."
+                        value={field.value || null}
+                        onChange={(url) => field.onChange(url ?? "")}
+                        bucketPathPrefix={firstPost ? `blog/${firstPost.id}` : "blog"}
+                        disabled={isLoading || updatePost.isPending}
+                      />
                     </FormItem>
                   )}
                 />

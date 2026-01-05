@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { ImageField } from "@/components/admin/ImageField";
 
 const schema = z.object({
   id: z.string(),
@@ -18,6 +19,7 @@ const schema = z.object({
   category: z.string().optional().nullable(),
   year: z.string().optional().nullable(),
   location: z.string().optional().nullable(),
+  thumbnail_url: z.string().url("URL inválida").optional().or(z.literal("")).nullable(),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -39,6 +41,7 @@ const AdminProjects = () => {
           category: firstProject.category ?? "",
           year: firstProject.year ?? "",
           location: firstProject.location ?? "",
+          thumbnail_url: firstProject.thumbnail_url ?? "",
         }
       : undefined,
   });
@@ -53,6 +56,7 @@ const AdminProjects = () => {
       category: firstProject.category ?? "",
       year: firstProject.year ?? "",
       location: firstProject.location ?? "",
+      thumbnail_url: firstProject.thumbnail_url ?? "",
     });
   }, [firstProject, form]);
 
@@ -172,6 +176,23 @@ const AdminProjects = () => {
                         <Input {...field} disabled={isLoading || updateProject.isPending} />
                       </FormControl>
                       <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="thumbnail_url"
+                  render={({ field }) => (
+                    <FormItem>
+                      <ImageField
+                        label="Thumbnail / imagem de capa do projeto"
+                        description="Esta imagem será usada como capa na listagem de projetos."
+                        value={field.value || null}
+                        onChange={(url) => field.onChange(url ?? "")}
+                        bucketPathPrefix={firstProject ? `projects/${firstProject.id}` : "projects"}
+                        disabled={isLoading || updateProject.isPending}
+                      />
                     </FormItem>
                   )}
                 />
