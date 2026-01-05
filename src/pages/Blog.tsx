@@ -1,32 +1,35 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
-import { blogPosts } from "@/data/blogPosts";
+import { useBlogPosts } from "@/hooks/useBlogPosts";
 
 const Blog = () => {
   const [activeCategory, setActiveCategory] = useState("TODAS");
-  
-  const categories = ["TODAS", "SUSTENTABILIDADE", "DESIGN", "PLANEJAMENTO URBANO"];
-  
-  const filteredPosts = activeCategory === "TODAS" 
-    ? blogPosts 
-    : blogPosts.filter(post => post.category === activeCategory);
+  const { data: posts = [] } = useBlogPosts();
+
+  const categories = [
+    "TODAS",
+    ...Array.from(new Set(posts.map((post) => post.category).filter(Boolean))) as string[],
+  ];
+
+  const filteredPosts =
+    activeCategory === "TODAS"
+      ? posts
+      : posts.filter((post) => post.category === activeCategory);
 
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       {/* Hero Section */}
       <section className="pt-32 pb-20">
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto">
             <div className="mb-12">
-              <h1 className="text-6xl md:text-8xl font-light text-architectural mb-8">
-                ARTIGOS
-              </h1>
+              <h1 className="text-6xl md:text-8xl font-light text-architectural mb-8">ARTIGOS</h1>
               <p className="text-xl text-muted-foreground max-w-3xl">
-                Explorando a interseção entre arquitetura, design e experiência humana
-                por meio de análises cuidadosas e perspectivas contemporâneas.
+                Explorando a interseção entre arquitetura, design e experiência humana por meio de
+                análises cuidadosas e perspectivas contemporâneas.
               </p>
             </div>
           </div>
@@ -43,17 +46,19 @@ const Blog = () => {
                   key={category}
                   onClick={() => setActiveCategory(category)}
                   className={`text-minimal transition-colors duration-300 relative group ${
-                    activeCategory === category 
-                      ? "text-foreground" 
+                    activeCategory === category
+                      ? "text-foreground"
                       : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {category}
-                  <span className={`absolute bottom-0 left-0 w-full h-px bg-foreground transition-transform duration-300 origin-left ${
-                    activeCategory === category 
-                      ? "scale-x-100" 
-                      : "scale-x-0 group-hover:scale-x-100"
-                  }`}></span>
+                  <span
+                    className={`absolute bottom-0 left-0 w-full h-px bg-foreground transition-transform duration-300 origin-left ${
+                      activeCategory === category
+                        ? "scale-x-100"
+                        : "scale-x-0 group-hover:scale-x-100"
+                    }`}
+                  ></span>
                 </button>
               ))}
             </div>
@@ -68,40 +73,56 @@ const Blog = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
               {filteredPosts.map((post) => (
                 <article key={post.id} className="group">
-                  <Link to={`/blog/${post.id}`} className="block">
+                  <Link to={`/blog/${post.slug}`} className="block">
                     <div className="relative overflow-hidden mb-6">
-                      <img 
-                        src={post.image} 
-                        alt={post.title}
-                        className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
+                      {post.cover_image_url && (
+                        <img
+                          src={post.cover_image_url}
+                          alt={post.title}
+                          className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                      )}
                       <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      
+
                       {/* Category Badge */}
                       <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm px-3 py-1">
-                        <span className="text-xs text-foreground font-medium">
-                          {post.category}
-                        </span>
+                        <span className="text-xs text-foreground font-medium">{post.category}</span>
                       </div>
                     </div>
-                    
+
                     <div className="space-y-4">
                       <div className="flex items-center text-xs text-muted-foreground space-x-4">
-                        <span>{post.date}</span>
-                        <span>•</span>
-                        <span>{post.readTime}</span>
-                        <span>•</span>
-                        <span>{post.author}</span>
+                        {post.published_at && (
+                          <span>
+                            {new Date(post.published_at).toLocaleDateString("pt-BR", {
+                              day: "2-digit",
+                              month: "short",
+                              year: "numeric",
+                            })}
+                          </span>
+                        )}
+                        {post.read_time && (
+                          <>
+                            <span>•</span>
+                            <span>{post.read_time}</span>
+                          </>
+                        )}
+                        {post.author_name && (
+                          <>
+                            <span>•</span>
+                            <span>{post.author_name}</span>
+                          </>
+                        )}
                       </div>
-                      
+
                       <h2 className="text-xl lg:text-2xl font-light text-architectural group-hover:text-muted-foreground transition-colors duration-500">
                         {post.title}
                       </h2>
-                      
+
                       <p className="text-muted-foreground leading-relaxed line-clamp-3">
-                        {post.excerpt}
+                        {post.summary}
                       </p>
-                      
+
                       <div className="pt-4">
                         <span className="text-minimal text-foreground hover:text-muted-foreground transition-colors duration-300 relative group-hover:underline">
                           LER MAIS
@@ -127,8 +148,8 @@ const Blog = () => {
               Assine nossa newsletter para receber os últimos insights sobre arquitetura e design
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
-              <input 
-                type="email" 
+              <input
+                type="email"
                 placeholder="Digite seu e-mail"
                 className="flex-1 px-6 py-4 bg-background border border-border text-foreground placeholder:text-muted-foreground"
               />
