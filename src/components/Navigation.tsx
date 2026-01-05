@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import LogoKanau from "@/assets/logo-kanau.png";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,11 +11,11 @@ const Navigation = () => {
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <img
-            src="/placeholder.svg"
-            alt="Logo do estúdio de arquitetura"
-            className="h-8 w-8 object-contain"
+            src={LogoKanau}
+            alt="Kanau — soluções em arquitetura"
+            className="h-9 w-auto object-contain"
           />
-          <span className="text-minimal text-foreground">ARCH STUDIO</span>
+          <span className="sr-only">Kanau — soluções em arquitetura</span>
         </div>
         
         <div className="hidden md:flex items-center space-x-12">
