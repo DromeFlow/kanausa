@@ -15,6 +15,9 @@ import Auth from "./pages/Auth";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminHome from "./pages/admin/AdminHome";
+import AdminServices from "./pages/admin/AdminServices";
+import AdminProjects from "./pages/admin/AdminProjects";
+import AdminBlog from "./pages/admin/AdminBlog";
 import { RequireAdmin } from "./components/RequireAdmin";
 
 const queryClient = new QueryClient();
@@ -45,6 +48,9 @@ const App = () => (
           >
             <Route index element={<AdminDashboard />} />
             <Route path="home" element={<AdminHome />} />
+            <Route path="services" element={<AdminServices />} />
+            <Route path="projects" element={<AdminProjects />} />
+            <Route path="blog" element={<AdminBlog />} />
           </Route>
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
