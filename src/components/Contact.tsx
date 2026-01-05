@@ -1,8 +1,10 @@
+import { Lock } from "lucide-react";
+
 const Contact = () => {
   return (
-    <section id="contact" className="py-32 bg-background">
+    <section id="contact" className="py-32 bg-background border-t border-border">
       <div className="container mx-auto px-6">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto space-y-12">
           <div className="grid md:grid-cols-2 gap-20">
             <div>
               <h2 className="text-minimal text-muted-foreground mb-4">FALE CONOSCO</h2>
@@ -11,22 +13,28 @@ const Contact = () => {
                 <br />
                 extraordinário
               </h3>
-              
+
               <div className="space-y-8">
                 <div>
                   <h4 className="text-minimal text-muted-foreground mb-2">E-MAIL</h4>
-                  <a href="mailto:hello@archstudio.com" className="text-xl hover:text-muted-foreground transition-colors duration-300">
+                  <a
+                    href="mailto:hello@archstudio.com"
+                    className="text-xl hover:text-muted-foreground transition-colors duration-300"
+                  >
                     hello@archstudio.com
                   </a>
                 </div>
-                
+
                 <div>
                   <h4 className="text-minimal text-muted-foreground mb-2">TELEFONE</h4>
-                  <a href="tel:+1234567890" className="text-xl hover:text-muted-foreground transition-colors duration-300">
+                  <a
+                    href="tel:+1234567890"
+                    className="text-xl hover:text-muted-foreground transition-colors duration-300"
+                  >
                     +1 (234) 567-8900
                   </a>
                 </div>
-                
+
                 <div>
                   <h4 className="text-minimal text-muted-foreground mb-2">ESCRITÓRIO</h4>
                   <address className="text-xl not-italic">
@@ -37,7 +45,7 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="space-y-8">
               <div>
                 <h4 className="text-minimal text-muted-foreground mb-6">SIGA-NOS</h4>
@@ -53,15 +61,26 @@ const Contact = () => {
                   </a>
                 </div>
               </div>
-              
+
               <div className="pt-12 border-t border-border">
                 <p className="text-muted-foreground">
-                  Encaramos cada projeto com curiosidade, rigor e compromisso com a excelência. 
+                  Encaramos cada projeto com curiosidade, rigor e compromisso com a excelência.
                   Nosso processo começa ouvindo, entendendo a sua visão e transformando-a em
                   espaços que superam as expectativas.
                 </p>
               </div>
             </div>
+          </div>
+
+          <div className="flex items-center justify-end pt-4 border-t border-dashed border-border text-xs text-muted-foreground gap-2">
+            <a
+              href="/auth"
+              className="inline-flex items-center gap-2 hover:text-foreground transition-colors"
+              aria-label="Acessar painel administrativo"
+            >
+              <span>Área restrita</span>
+              <Lock className="w-4 h-4" />
+            </a>
           </div>
         </div>
       </div>
