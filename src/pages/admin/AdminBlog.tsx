@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -30,6 +30,7 @@ const AdminBlog = () => {
   const { toast } = useToast();
 
   const firstPost = useMemo(() => posts[0], [posts]);
+  const [activeField, setActiveField] = useState<keyof FormValues | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(schema),
