@@ -18,6 +18,7 @@ import AdminHome from "./pages/admin/AdminHome";
 import AdminServices from "./pages/admin/AdminServices";
 import AdminProjects from "./pages/admin/AdminProjects";
 import AdminBlog from "./pages/admin/AdminBlog";
+import AdminContact from "./pages/admin/AdminContact";
 import { RequireAdmin } from "./components/RequireAdmin";
 
 const queryClient = new QueryClient();
@@ -51,6 +52,7 @@ const App = () => (
             <Route path="services" element={<AdminServices />} />
             <Route path="projects" element={<AdminProjects />} />
             <Route path="blog" element={<AdminBlog />} />
+            <Route path="contact" element={<AdminContact />} />
           </Route>
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
