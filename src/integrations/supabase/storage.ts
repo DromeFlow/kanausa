@@ -14,7 +14,7 @@ interface UploadImageResult {
 /**
  * Faz upload de uma imagem para o Supabase Storage e retorna a URL pública.
  */
-export async function uploadImage({ bucket = "media", pathPrefix, file }: UploadImageParams): Promise<UploadImageResult> {
+export async function uploadImage({ bucket = "public-assets", pathPrefix, file }: UploadImageParams): Promise<UploadImageResult> {
   try {
     const safePrefix = pathPrefix.replace(/^\/+|\/+$/g, "");
     const timestamp = Date.now();
