@@ -14,6 +14,237 @@ export type Database = {
   }
   public: {
     Tables: {
+      about_sections: {
+        Row: {
+          body: string | null
+          id: string
+          section_key: string
+          title: string | null
+          updated_at: string
+        }
+        Insert: {
+          body?: string | null
+          id?: string
+          section_key: string
+          title?: string | null
+          updated_at?: string
+        }
+        Update: {
+          body?: string | null
+          id?: string
+          section_key?: string
+          title?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      blog_posts: {
+        Row: {
+          author_name: string | null
+          category: string | null
+          content: string | null
+          cover_image_url: string | null
+          id: string
+          is_published: boolean
+          published_at: string | null
+          read_time: string | null
+          slug: string
+          summary: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author_name?: string | null
+          category?: string | null
+          content?: string | null
+          cover_image_url?: string | null
+          id?: string
+          is_published?: boolean
+          published_at?: string | null
+          read_time?: string | null
+          slug: string
+          summary?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author_name?: string | null
+          category?: string | null
+          content?: string | null
+          cover_image_url?: string | null
+          id?: string
+          is_published?: boolean
+          published_at?: string | null
+          read_time?: string | null
+          slug?: string
+          summary?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      contact_info: {
+        Row: {
+          email: string | null
+          follow_text: string | null
+          id: string
+          intro_description: string | null
+          intro_title: string | null
+          phone: string | null
+          studio_address: string | null
+          updated_at: string
+        }
+        Insert: {
+          email?: string | null
+          follow_text?: string | null
+          id?: string
+          intro_description?: string | null
+          intro_title?: string | null
+          phone?: string | null
+          studio_address?: string | null
+          updated_at?: string
+        }
+        Update: {
+          email?: string | null
+          follow_text?: string | null
+          id?: string
+          intro_description?: string | null
+          intro_title?: string | null
+          phone?: string | null
+          studio_address?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      home_hero: {
+        Row: {
+          background_image_url: string | null
+          cta_text: string | null
+          id: string
+          scroll_label: string | null
+          subtitle: string | null
+          title: string | null
+          updated_at: string
+        }
+        Insert: {
+          background_image_url?: string | null
+          cta_text?: string | null
+          id?: string
+          scroll_label?: string | null
+          subtitle?: string | null
+          title?: string | null
+          updated_at?: string
+        }
+        Update: {
+          background_image_url?: string | null
+          cta_text?: string | null
+          id?: string
+          scroll_label?: string | null
+          subtitle?: string | null
+          title?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      projects: {
+        Row: {
+          area: string | null
+          category: string | null
+          description: string | null
+          highlight: boolean
+          id: string
+          location: string | null
+          slug: string
+          thumbnail_url: string | null
+          title: string
+          updated_at: string
+          year: string | null
+        }
+        Insert: {
+          area?: string | null
+          category?: string | null
+          description?: string | null
+          highlight?: boolean
+          id?: string
+          location?: string | null
+          slug: string
+          thumbnail_url?: string | null
+          title: string
+          updated_at?: string
+          year?: string | null
+        }
+        Update: {
+          area?: string | null
+          category?: string | null
+          description?: string | null
+          highlight?: boolean
+          id?: string
+          location?: string | null
+          slug?: string
+          thumbnail_url?: string | null
+          title?: string
+          updated_at?: string
+          year?: string | null
+        }
+        Relationships: []
+      }
+      services: {
+        Row: {
+          description: string | null
+          icon_name: string | null
+          id: string
+          order: number | null
+          slug: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          description?: string | null
+          icon_name?: string | null
+          id?: string
+          order?: number | null
+          slug: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          description?: string | null
+          icon_name?: string | null
+          id?: string
+          order?: number | null
+          slug?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      site_settings: {
+        Row: {
+          admin_link_label: string
+          footer_text: string | null
+          id: string
+          show_admin_link: boolean
+          site_name: string | null
+          updated_at: string
+        }
+        Insert: {
+          admin_link_label?: string
+          footer_text?: string | null
+          id?: string
+          show_admin_link?: boolean
+          site_name?: string | null
+          updated_at?: string
+        }
+        Update: {
+          admin_link_label?: string
+          footer_text?: string | null
+          id?: string
+          show_admin_link?: boolean
+          site_name?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string
