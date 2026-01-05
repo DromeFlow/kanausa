@@ -221,24 +221,33 @@ export type Database = {
       site_settings: {
         Row: {
           admin_link_label: string
+          behance_url: string | null
           footer_text: string | null
           id: string
+          instagram_url: string | null
+          linkedin_url: string | null
           show_admin_link: boolean
           site_name: string | null
           updated_at: string
         }
         Insert: {
           admin_link_label?: string
+          behance_url?: string | null
           footer_text?: string | null
           id?: string
+          instagram_url?: string | null
+          linkedin_url?: string | null
           show_admin_link?: boolean
           site_name?: string | null
           updated_at?: string
         }
         Update: {
           admin_link_label?: string
+          behance_url?: string | null
           footer_text?: string | null
           id?: string
+          instagram_url?: string | null
+          linkedin_url?: string | null
           show_admin_link?: boolean
           site_name?: string | null
           updated_at?: string

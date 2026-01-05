@@ -75,16 +75,17 @@ const AdminHome = () => {
   };
 
   return (
-    <div className="space-y-8">
-      <div>
-        <h1 className="text-2xl font-semibold mb-2">Home</h1>
-        <p className="text-sm text-muted-foreground">
-          Veja uma pré-visualização da página inicial e edite os textos principais.
+    <div className="space-y-8 animate-fade-in">
+      <div className="space-y-1">
+        <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-muted-foreground">Página inicial</p>
+        <h1 className="text-2xl font-semibold">Home</h1>
+        <p className="text-sm text-muted-foreground max-w-xl">
+          Pré-visualize a hero da home e ajuste título, subtítulo, CTA, indicador de scroll e imagem de fundo.
         </p>
       </div>
 
       <div className="grid gap-8 lg:grid-cols-2">
-        <section className="border border-border rounded-lg overflow-hidden bg-muted/30">
+        <section className="border border-border rounded-xl overflow-hidden bg-muted/30">
           {/* Pré-visualização interativa: clique nas áreas para focar os campos ao lado */}
           <div className="relative aspect-[3/4] lg:aspect-auto max-h-[80vh] overflow-y-auto">
             <Hero />
@@ -123,7 +124,7 @@ const AdminHome = () => {
           </div>
         </section>
 
-        <section className="border border-border rounded-lg p-6">
+        <section className="border border-border rounded-xl p-6 lg:p-8 bg-muted/40">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
               <FormField
@@ -199,8 +200,12 @@ const AdminHome = () => {
                 )}
               />
 
-              <div className="pt-2">
-                <Button type="submit" disabled={isLoading || updateHero.isPending}>
+              <div className="flex justify-end pt-2">
+                <Button
+                  type="submit"
+                  disabled={isLoading || updateHero.isPending}
+                  className="hover-scale"
+                >
                   {updateHero.isPending ? "Salvando..." : "Salvar alterações"}
                 </Button>
               </div>

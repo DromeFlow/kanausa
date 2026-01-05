@@ -18,6 +18,9 @@ const schema = z.object({
   footer_text: z.string().optional().nullable(),
   show_admin_link: z.boolean(),
   admin_link_label: z.string().min(1, "Texto do link obrigatório"),
+  instagram_url: z.string().url("URL inválida").optional().nullable(),
+  linkedin_url: z.string().url("URL inválida").optional().nullable(),
+  behance_url: z.string().url("URL inválida").optional().nullable(),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -38,6 +41,9 @@ const AdminSettings = () => {
           footer_text: settings.footer_text ?? "",
           show_admin_link: settings.show_admin_link,
           admin_link_label: settings.admin_link_label,
+          instagram_url: settings.instagram_url ?? "",
+          linkedin_url: settings.linkedin_url ?? "",
+          behance_url: settings.behance_url ?? "",
         }
       : undefined,
   });
@@ -51,6 +57,9 @@ const AdminSettings = () => {
       footer_text: settings.footer_text ?? "",
       show_admin_link: settings.show_admin_link,
       admin_link_label: settings.admin_link_label,
+      instagram_url: settings.instagram_url ?? "",
+      linkedin_url: settings.linkedin_url ?? "",
+      behance_url: settings.behance_url ?? "",
     });
   }, [settings, form]);
 
@@ -127,7 +136,7 @@ const AdminSettings = () => {
                 </div>
 
                 <div className="space-y-4">
-                  <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                  <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground flex items-center gap-2">
                     Acesso administrativo
                   </p>
 
@@ -164,6 +173,64 @@ const AdminSettings = () => {
                             {...field}
                             disabled={isLoading || updateSettings.isPending}
                             placeholder="Admin"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground mt-6">
+                    Links de redes sociais globais
+                  </p>
+
+                  <FormField
+                    control={form.control}
+                    name="instagram_url"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Instagram</FormLabel>
+                        <FormControl>
+                          <Input
+                            {...field}
+                            disabled={isLoading || updateSettings.isPending}
+                            placeholder="https://instagram.com/seu-estudio"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="linkedin_url"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>LinkedIn</FormLabel>
+                        <FormControl>
+                          <Input
+                            {...field}
+                            disabled={isLoading || updateSettings.isPending}
+                            placeholder="https://linkedin.com/company/seu-estudio"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="behance_url"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Behance</FormLabel>
+                        <FormControl>
+                          <Input
+                            {...field}
+                            disabled={isLoading || updateSettings.isPending}
+                            placeholder="https://behance.net/seu-estudio"
                           />
                         </FormControl>
                         <FormMessage />
