@@ -14,19 +14,19 @@ const Navigation = () => {
         
         <div className="hidden md:flex items-center space-x-12">
           <a href="/work" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
-            WORK
+            PROJETOS
           </a>
           <a href="/services" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
-            SERVICES
+            SERVIÇOS
           </a>
           <a href="/about" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
-            ABOUT
+            SOBRE
           </a>
           <a href="/blog" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
             BLOG
           </a>
           <a href="/contact" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
-            CONTACT
+            CONTATO
           </a>
         </div>
 
@@ -49,19 +49,19 @@ const Navigation = () => {
         <div className="md:hidden bg-background border-b border-border">
           <div className="container mx-auto px-6 py-6 space-y-4">
             <a href="/work" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
-              WORK
+              PROJETOS
             </a>
             <a href="/services" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
-              SERVICES
+              SERVIÇOS
             </a>
             <a href="/about" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
-              ABOUT
+              SOBRE
             </a>
             <a href="/blog" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
               BLOG
             </a>
             <a href="/contact" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
-              CONTACT
+              CONTATO
             </a>
             
             {/* Mobile Theme Toggle */}

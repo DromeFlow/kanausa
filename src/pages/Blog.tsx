@@ -4,11 +4,11 @@ import Navigation from "@/components/Navigation";
 import { blogPosts } from "@/data/blogPosts";
 
 const Blog = () => {
-  const [activeCategory, setActiveCategory] = useState("ALL");
+  const [activeCategory, setActiveCategory] = useState("TODAS");
   
-  const categories = ["ALL", "SUSTAINABILITY", "DESIGN", "URBAN PLANNING"];
+  const categories = ["TODAS", "SUSTENTABILIDADE", "DESIGN", "PLANEJAMENTO URBANO"];
   
-  const filteredPosts = activeCategory === "ALL" 
+  const filteredPosts = activeCategory === "TODAS" 
     ? blogPosts 
     : blogPosts.filter(post => post.category === activeCategory);
 
@@ -22,11 +22,11 @@ const Blog = () => {
           <div className="max-w-7xl mx-auto">
             <div className="mb-12">
               <h1 className="text-6xl md:text-8xl font-light text-architectural mb-8">
-                INSIGHTS
+                ARTIGOS
               </h1>
               <p className="text-xl text-muted-foreground max-w-3xl">
-                Exploring the intersection of architecture, design, and human experience 
-                through thoughtful analysis and contemporary perspectives.
+                Explorando a interseção entre arquitetura, design e experiência humana
+                por meio de análises cuidadosas e perspectivas contemporâneas.
               </p>
             </div>
           </div>
@@ -104,7 +104,7 @@ const Blog = () => {
                       
                       <div className="pt-4">
                         <span className="text-minimal text-foreground hover:text-muted-foreground transition-colors duration-300 relative group-hover:underline">
-                          READ MORE
+                          LER MAIS
                         </span>
                       </div>
                     </div>
@@ -121,19 +121,19 @@ const Blog = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl md:text-6xl font-light text-architectural mb-8">
-              Stay Informed
+              Fique por dentro
             </h2>
             <p className="text-xl text-muted-foreground mb-12">
-              Subscribe to our newsletter for the latest insights on architecture and design
+              Assine nossa newsletter para receber os últimos insights sobre arquitetura e design
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
               <input 
                 type="email" 
-                placeholder="Enter your email"
+                placeholder="Digite seu e-mail"
                 className="flex-1 px-6 py-4 bg-background border border-border text-foreground placeholder:text-muted-foreground"
               />
               <button className="px-8 py-4 bg-foreground text-background hover:bg-muted-foreground transition-colors duration-300">
-                SUBSCRIBE
+                INSCREVER-SE
               </button>
             </div>
           </div>

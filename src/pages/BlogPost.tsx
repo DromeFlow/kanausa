@@ -14,13 +14,13 @@ const BlogPost = () => {
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="text-4xl md:text-6xl font-light text-architectural mb-8">
-                Post Not Found
+                Artigo não encontrado
               </h1>
               <Link 
                 to="/blog" 
                 className="text-minimal text-foreground hover:text-muted-foreground transition-colors duration-300"
               >
-                ← BACK TO BLOG
+                ← VOLTAR PARA O BLOG
               </Link>
             </div>
           </div>
@@ -42,7 +42,7 @@ const BlogPost = () => {
               to="/blog" 
               className="inline-block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300 mb-12"
             >
-              ← BACK TO BLOG
+              ← VOLTAR PARA O BLOG
             </Link>
             
             {/* Article Meta */}
@@ -112,14 +112,14 @@ const BlogPost = () => {
                 <div className="w-16 h-16 bg-muted rounded-full"></div>
                 <div>
                   <h3 className="text-lg font-medium text-foreground">{post.author}</h3>
-                  <p className="text-muted-foreground">Architect & Writer</p>
+                  <p className="text-muted-foreground">Arquiteto(a) e escritor(a)</p>
                 </div>
               </div>
             </div>
             
             {/* Related Posts */}
             <div className="mt-20">
-              <h3 className="text-2xl font-light text-architectural mb-8">Related Articles</h3>
+              <h3 className="text-2xl font-light text-architectural mb-8">Artigos relacionados</h3>
               <div className="grid md:grid-cols-2 gap-8">
                 {blogPosts
                   .filter(p => p.id !== post.id && p.category === post.category)
