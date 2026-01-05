@@ -83,9 +83,41 @@ const AdminHome = () => {
 
       <div className="grid gap-8 lg:grid-cols-2">
         <section className="border border-border rounded-lg overflow-hidden bg-muted/30">
-          {/* Pré-visualização simples reutilizando o Hero público */}
-          <div className="aspect-[3/4] lg:aspect-auto max-h-[80vh] overflow-y-auto">
+          {/* Pré-visualização interativa: clique nas áreas para focar os campos ao lado */}
+          <div className="relative aspect-[3/4] lg:aspect-auto max-h-[80vh] overflow-y-auto">
             <Hero />
+
+            {/* Hotspots clicáveis para focar os campos do formulário */}
+            <button
+              type="button"
+              className="absolute inset-x-10 top-1/4 h-1/5 rounded-md border border-transparent hover:border-primary/60 hover:bg-background/5 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+              onClick={() => form.setFocus("title")}
+            />
+
+            <button
+              type="button"
+              className="absolute inset-x-16 top-[48%] h-1/6 rounded-md border border-transparent hover:border-primary/60 hover:bg-background/5 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+              onClick={() => form.setFocus("subtitle")}
+            />
+
+            <button
+              type="button"
+              className="absolute left-1/2 -translate-x-1/2 bottom-8 w-32 h-16 rounded-md border border-transparent hover:border-primary/60 hover:bg-background/5 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+              onClick={() => form.setFocus("scroll_label")}
+            />
+
+            <div className="absolute top-4 right-4 flex flex-col items-end gap-1 text-[10px] text-muted-foreground">
+              <span className="inline-flex items-center rounded-full bg-background/70 px-2 py-1 border border-border">
+                Fundo
+                <button
+                  type="button"
+                  className="ml-1 underline underline-offset-2 hover:text-foreground"
+                  onClick={() => form.setFocus("background_image_url")}
+                >
+                  editar
+                </button>
+              </span>
+            </div>
           </div>
         </section>
 
