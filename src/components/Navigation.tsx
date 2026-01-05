@@ -9,11 +9,11 @@ const Navigation = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-2 md:space-x-3">
           <img
             src={LogoKanau}
             alt="Kanau — soluções em arquitetura"
-            className="h-9 w-auto object-contain"
+            className="h-8 w-auto object-contain md:h-10"
           />
           <span className="sr-only">Kanau — soluções em arquitetura</span>
         </div>
